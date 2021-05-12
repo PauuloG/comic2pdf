@@ -11,6 +11,19 @@ Install the package using [setuptools](https://github.com/pypa/setuptools).
 $ python setup.py install
 ```
 
+#### Install using docker image
+
+To use the built-in docker image, you can build it locally using
+```
+docker build -t comic2pdf ./
+```
+
+You can then use the docker image as such :
+```
+# Where /path/to/directory is the dir where your comics are stored.
+docker run -it --rm -v /path/to/directory:/tmp/comics comic2pdf -h
+```
+
 ### Running
 
 The `comic2pdf` command should be globally available, pass as arguments the path(s) to the cbr / cbz files and optionally specify an output folder. The output files will be named the same as the input files but with a .pdf extension.
@@ -55,7 +68,7 @@ $ python comic2pdf.py -o /dest/folder file.cbr
 
 ## Development
 
-### Installing 
+### Installing
 
 Development is aided by a Makefile which uses a virtual environment. To setup the virtual environment and install dependencies:
 
@@ -71,7 +84,7 @@ To test changes to your script, you can install a development version which link
 $ python setup.py develop
 ```
 
-And this can be uninstalled with 
+And this can be uninstalled with
 
 ```
 $ python setup.py develop --uninstall
